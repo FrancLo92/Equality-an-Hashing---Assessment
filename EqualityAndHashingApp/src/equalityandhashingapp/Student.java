@@ -13,25 +13,19 @@ import java.util.Objects;
  * @author HP Mini
  */
 public class Student extends Person {
-    private String StudentID;
+    public int StudentID;
     private String Program;
     private Date DateRegistered;
     private Enrollment Enrollment;
 
     //all arg constructor
-    public Student(String name, String email, String telNum, String studentID, String program, Date dateRegistered) {
+    public Student(String name, String email, String telNum, int studentID, String program, Date dateRegistered) {
         super(name, email, telNum);
         this.StudentID = studentID;
         this.Program = program;
         this.DateRegistered = dateRegistered;
         this.Enrollment = new Enrollment();        
     }
-    
-    //no arg constructor
-    public Student(){
-        this(null,null,null,null,null,null);
-    }
-
 
     // I used the ID as the equals criteria because its value is a unique identifier
     @Override
@@ -68,11 +62,11 @@ public class Student extends Person {
         this.Enrollment = Enrollment;
     }
 
-    public String getStudentID() {
+    public int getStudentID() {
         return StudentID;
     }
 
-    public void setStudentID(String StudentID) {
+    public void setStudentID(int StudentID) {
         this.StudentID = StudentID;
     }
 

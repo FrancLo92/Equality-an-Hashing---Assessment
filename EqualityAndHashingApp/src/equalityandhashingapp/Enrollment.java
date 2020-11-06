@@ -14,13 +14,13 @@ import java.util.Objects;
  */
 public class Enrollment {   
     
-    private String EnrollmentID;
+    public int EnrollmentID;
     private Date DateEnrolled;
     private String Semester;
     private String Grade;
     private Course Course;
     
-    public Enrollment(String enrollmentID, Date dateEnrolled, String grade, String semester, Course course){
+    public Enrollment(int enrollmentID, Date dateEnrolled, String grade, String semester, Course course){
         this.EnrollmentID = enrollmentID;
         this.DateEnrolled = dateEnrolled;
         this.Grade = grade;
@@ -49,14 +49,15 @@ public class Enrollment {
     }
     
     //all args constructor
-    public Enrollment(String enrollmentID, Date dateEnrolled, String grade, String semester){
+    public Enrollment(int enrollmentID, Date dateEnrolled, String grade, String semester){
         this(enrollmentID, dateEnrolled,grade, semester,null);  
     }
     
     // no args constructor
     public Enrollment(){
-        this(null, null, null, null);  
+        this(0, null, null, null);  
     }
+    
 
     @Override
     public String toString() {
@@ -80,11 +81,11 @@ public class Enrollment {
         this.Course = Course;
     }
     
-     public String getEnrollmentID() {
+     public int getEnrollmentID() {
         return EnrollmentID;
     }
 
-    public void setEnrollmentID(String EnrollmentID) {
+    public void setEnrollmentID(int EnrollmentID) {
         this.EnrollmentID = EnrollmentID;
     }
 

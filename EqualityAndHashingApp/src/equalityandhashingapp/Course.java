@@ -12,24 +12,17 @@ import java.util.Objects;
  * @author HP Mini
  */
 public class Course {
-    public String CourseID;
-    public String CourseName;
-    public double Cost;
+    public int CourseID;
+    private String CourseName;
+    private double Cost;
     
     //all args constructor
-    public Course(String courseID, String courseName, double cost){
+    public Course(int courseID, String courseName, double cost){
         this.CourseID = courseID;
         this.CourseName = courseName;
         this.Cost = cost;        
     }
     
-    //no args constructor
-    public Course(){
-        this(null,null,0);       
-    }
-
-    
-
     // I used the ID as the equals criteria because its value is a unique identifier
     @Override
     public boolean equals(Object obj) {
@@ -51,11 +44,11 @@ public class Course {
 
     
     // getters & setters
-    public String getCourseID() {
+    public int getCourseID() {
         return CourseID;
     }
 
-    public void setCourseID(String CourseID) {
+    public void setCourseID(int CourseID) {
         this.CourseID = CourseID;
     }
 
