@@ -6,6 +6,7 @@
 package equalityandhashingapp;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -16,28 +17,61 @@ public class Enrollment {
     private String EnrollmentID;
     private Date DateEnrolled;
     private String Semester;
+    private String Grade;
     private Course Course;
     
-    public Enrollment(String enrollmentID, Date dateEnrolled, String semester, Course course){
+    public Enrollment(String enrollmentID, Date dateEnrolled, String grade, String semester, Course course){
         this.EnrollmentID = enrollmentID;
         this.DateEnrolled = dateEnrolled;
+        this.Grade = grade;
         this.Semester = semester;      
         this.Course = course;
     }
-    
-    public Enrollment(String enrollmentID, Date dateEnrolled, String semester){
-        this(enrollmentID, dateEnrolled, semester, new Course());  
+
+       
+    // I used the ID as the equals criteria because its value is a unique identifier
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Enrollment other = (Enrollment) obj;
+        if (!Objects.equals(this.EnrollmentID, other.EnrollmentID)) {
+            return false;
+        }
+        return true;
     }
+    
+    //all args constructor
+    public Enrollment(String enrollmentID, Date dateEnrolled, String grade, String semester){
+        this(enrollmentID, dateEnrolled,grade, semester,null);  
+    }
+    
     // no args constructor
     public Enrollment(){
-        this("N/A", new Date(), "N/A", new Course());  
+        this(null, null, null, null);  
     }
 
     @Override
     public String toString() {
-        return "Enrollment{" + "EnrollmentID=" + EnrollmentID + ", DateEnrolled=" + DateEnrolled + ", Semester=" + Semester + ", Course=" + Course.toString() + '}';
+        return "Enrollment{" + "EnrollmentID=" + EnrollmentID + ", DateEnrolled=" + DateEnrolled +", Grade=" + Grade + ", Semester=" + Semester + ", Course=" + Course.toString() + '}';
     }
 
+    public String getGrade() {
+        return Grade;
+    }
+
+    public void setGrade(String Grade) {
+        this.Grade = Grade;
+    }
+
+    //getters & setters
     public Course getCourse() {
         return Course;
     }

@@ -6,6 +6,7 @@
 package equalityandhashingapp;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Student extends Person {
     private Date DateRegistered;
     private Enrollment Enrollment;
 
+    //all arg constructor
     public Student(String name, String email, String telNum, String studentID, String program, Date dateRegistered) {
         super(name, email, telNum);
         this.StudentID = studentID;
@@ -24,12 +26,40 @@ public class Student extends Person {
         this.DateRegistered = dateRegistered;
         this.Enrollment = new Enrollment();        
     }
+    
+    //no arg constructor
+    public Student(){
+        this(null,null,null,null,null,null);
+    }
 
+
+    // I used the ID as the equals criteria because its value is a unique identifier
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Student other = (Student) obj;
+        if (!Objects.equals(this.StudentID, other.StudentID)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+    
     @Override
     public String toString() {
         return "Student{" + "StudentID=" + StudentID + ", Program=" + Program + ", DateRegistered=" + DateRegistered + ", Enrollment=" + Enrollment.toString() + '}';
     }
 
+    //getters & setters
     public Enrollment getEnrollment() {
         return Enrollment;
     }
