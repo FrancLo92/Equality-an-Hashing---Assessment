@@ -55,7 +55,7 @@ public class Enrollment {
     
     // no args constructor
     public Enrollment(){
-        this(0, null, null, null);  
+        this(0, new Date(), "", "");  
     }
     
 
